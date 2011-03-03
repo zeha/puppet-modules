@@ -3,6 +3,9 @@ class puppet::client {
     context => "/files/etc/default/puppet",
     changes => "set START yes",
   }
+  service { "puppet":
+    enable => true,
+  }
   package { "puppet":
     ensure => installed,
   }
@@ -14,5 +17,13 @@ class puppet::client {
   }
   package { "lsb-base":
     ensure => installed,
+  }
+  file { "/etc/puppet/puppet.conf":
+    source => "puppet:///modules/puppet/puppet.conf",
+    mode   => 0644,
+    owner  => root,
+    group  => root,
+    ensure => present,
+    notify => Service["puppet"],
   }
 }
