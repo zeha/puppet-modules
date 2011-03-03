@@ -1,0 +1,30 @@
+
+export HGMERGE=vimdiff
+
+# for quagga vtysh
+export VTYSH_PAGER="less -F -X -L"
+
+# needed for prompt colors
+autoload colors
+colors
+function lprompt {
+  if [[ "$TERM" == dumb ]] ; then
+    return
+  fi
+
+  local col red white reset
+  col="$1"
+  if (( EUID == 0 )); then
+    col="red"
+  fi
+  reset="%{$reset_color%}"
+  col="${reset}%{$fg_bold[$1]%}"
+  red="${reset}%{$fg_bold[red]%}"
+  white="${reset}%{$fg_bold[white]%}"
+
+  # a simple modification from the grml prompt
+  PROMPT="${red}${EXITCODE}${white}${debian_chroot:+($debian_chroot)}${white}%n${col}@%m${reset}:%40<...<%B%~%b%<< "'${VCS_INFO_message_0_}'"%# "
+}
+lprompt yellow
+unfunction lprompt
+

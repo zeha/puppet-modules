@@ -1,0 +1,37 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This file is managed by Puppet, module "vim".
+" DO NOT EDIT, YOUR CHANGES WILL BE LOST.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocp " do this first
+set viminfo=%,'50,\"100,:100,n~/.viminfo
+set nobackup digraph ek hidden
+set ruler showcmd showmatch showmode vb wmnu
+set noeb noet nosol
+set bs=2 fo=cqrt ls=2 mls=2 shm=at report=0
+
+set background=dark
+" colorscheme darkblue
+syntax on
+filetype plugin indent on
+set hlsearch tags=tags,./tags
+" set shiftwidth=2
+
+"set expandtab
+"set tabstop=2
+"set shiftwidth=2
+
+set cindent
+let c_space_errors=1
+
+set pastetoggle=<F5>
+
+set cf " enable error files and error jumping
+set isk+=_,$,@,%,#,- " none of these should be word dividers, so make them not be
+
+set nodg " disable x<BS>y editing ("digraph")
+
+nnoremap <C-N> :next<Enter>
+nnoremap <C-P> :prev<Enter>
+
+

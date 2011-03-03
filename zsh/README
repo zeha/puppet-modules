@@ -1,0 +1,9 @@
+Manages the Z Shell.
+
+Tested platforms: Debian etch+, Ubuntu.
+
+zshrc is taken from http://grml.org/console
+Many thanks to the GRML Team for providing a so nice preconfigured zsh.
+
+License: GPLv2, as zshrc itself is under GPLv2.
+
