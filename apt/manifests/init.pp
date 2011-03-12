@@ -10,5 +10,14 @@ class apt {
     group  => root,
     ensure => present,
   }
+
+  file { "/etc/apt/sources.list":
+    source => "puppet:///modules/apt/sources.list",
+    mode   => 0644,
+    owner  => root,
+    group  => root,
+    ensure => present,
+  }
+
 }
 
