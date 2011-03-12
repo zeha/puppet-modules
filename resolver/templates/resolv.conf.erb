@@ -1,0 +1,9 @@
+################################################################################
+# This file is managed using puppet.
+# DO NOT EDIT, YOUR CHANGES WILL BE LOST.
+################################################################################
+
+domain <%= domain %>
+search <%= searchdomain %>
+<% nameserver.each do |n| %>nameserver <%= n %>
+<% end %>
