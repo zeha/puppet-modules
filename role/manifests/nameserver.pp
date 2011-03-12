@@ -1,5 +1,5 @@
 class role::nameserver {
-  include auto::os
+  include auto::detect
   include puppet::client
   include vim
   include zsh
