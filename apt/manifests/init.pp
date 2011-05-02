@@ -21,3 +21,8 @@ class apt {
 
 }
 
+class apt::unattendedupgrades {
+  package { "unattended-upgrades":
+    ensure => installed,
+  }
+}
