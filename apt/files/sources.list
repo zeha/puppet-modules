@@ -8,7 +8,9 @@ deb-src http://ftp.at.debian.org/debian squeeze main non-free contrib
 deb http://ftp.at.debian.org/debian squeeze-updates main non-free contrib
 deb-src http://ftp.at.debian.org/debian squeeze-updates main non-free contrib
 deb http://security.debian.org/ squeeze/updates main non-free contrib
-deb-src http://ftp.de.debian.org/debian squeeze main non-free contrib
+deb-src http://security.debian.org/ squeeze/updates main non-free contrib
+deb http://ftp.at.debian.org/debian-backports squeeze-backports main
+deb-src http://ftp.at.debian.org/debian-backports squeeze-backports main
 
 deb-src http://ftp.at.debian.org/debian unstable main non-free contrib
 
