@@ -9,4 +9,11 @@ class syslog {
     group  => root,
     ensure => present,
   }
+  file { "/etc/logrotate.d/rsyslog":
+    source => "puppet:///modules/syslog/logrotate",
+    mode   => 0644,
+    owner  => root,
+    group  => root,
+    ensure => present,
+  }
 }

@@ -1,0 +1,27 @@
+/var/log/syslog
+/var/log/system.log
+{
+	rotate 7
+	daily
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		invoke-rc.d rsyslog reload > /dev/null
+	endscript
+}
+
+/var/log/auth.log
+{
+	rotate 4
+	weekly
+	missingok
+	notifempty
+	compress
+	delaycompress
+	sharedscripts
+	postrotate
+		invoke-rc.d rsyslog reload > /dev/null
+	endscript
+}

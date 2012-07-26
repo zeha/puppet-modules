@@ -5,7 +5,7 @@ class nullmailer {
     ensure  => installed,
   }
   service { "nullmailer":
-    ensure  => running,
+    enable  => true,
     require => Package["nullmailer"],
   }
   File {
