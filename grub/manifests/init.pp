@@ -11,5 +11,6 @@ class grub {
   exec { "update-grub":
     path => "/usr/sbin:/sbin:/usr/bin:/bin",
     user => "root",
+    refreshonly => true,
   }
 }
