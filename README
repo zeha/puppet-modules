@@ -3,3 +3,22 @@ Namespace.at Puppet Modules
 
 License: see file COPYING.
 
+Typical site.pp
+---------------
+
+-->>--
+$ymllookup_datadir = "/etc/puppet/manifests/ymldata"
+$ymllookup_precedence = ["host/%{fqdn}", "domain/%{domain}", "default"]
+
+Exec {
+  path => "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+}
+
+File {
+  owner => "root",
+  group => "root",
+}
+
+import "nodes.pp"
+--<<--
+
