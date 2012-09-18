@@ -1,28 +1,32 @@
 class apt {
   package { "aptitude":
-    ensure => installed,
+    ensure => installed
+  }
+  package { "deborphan":
+    ensure => installed
+  }
+
+  exec { "apt-get update":
+    refreshonly => true
   }
 
   file { "/etc/apt/apt.conf":
-    source => "puppet:///modules/apt/apt.conf",
-    mode   => 0644,
-    owner  => root,
-    group  => root,
     ensure => present,
+    mode   => 0644,
+    source => "puppet:///modules/apt/apt.conf"
   }
 
   file { "/etc/apt/sources.list":
-    source => "puppet:///modules/apt/sources.list",
-    mode   => 0644,
-    owner  => root,
-    group  => root,
     ensure => present,
+    mode   => 0644,
+    source => "puppet:///modules/apt/sources.list.${lsbdistcodename}",
+    notify => Exec["apt-get update"]
   }
 
 }
 
 class apt::unattendedupgrades {
   package { "unattended-upgrades":
-    ensure => installed,
+    ensure => installed
   }
 }
