@@ -6,4 +6,5 @@ class auto::os {
 
 class auto::os::debian {
   include apt
+  include apt::unattendedupgrades
 }
