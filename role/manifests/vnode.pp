@@ -7,5 +7,5 @@ class role::vnode {
   include vim
   include zsh
 
-  include openvz::vnode
+  include kvm::vnode
 }
