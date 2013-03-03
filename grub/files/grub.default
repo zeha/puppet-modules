@@ -32,3 +32,7 @@ GRUB_GFXPAYLOAD_LINUX=keep
 
 # Uncomment to get a beep at grub start
 #GRUB_INIT_TUNE="480 440 1"
+
+# Disable os-prober. Causes problems on Virtualization hosts and so on.
+# Not sure why os-prober is default on...
+GRUB_DISABLE_OS_PROBER=true
