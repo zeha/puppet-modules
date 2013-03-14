@@ -1,0 +1,106 @@
+################################################################################
+# THIS FILE IS MANAGED BY PUPPET, MODULE "apache".
+# DO NOT EDIT, YOUR CHANGES WILL BE LOST.
+################################################################################
+
+#
+# KeepAlive: Whether or not to allow persistent connections (more than
+# one request per connection). Set to "Off" to deactivate.
+#
+KeepAlive <%=apache_keepalive%>
+
+#
+# MaxKeepAliveRequests: The maximum number of requests to allow
+# during a persistent connection. Set to 0 to allow an unlimited amount.
+# We recommend you leave this number high, for maximum performance.
+#
+MaxKeepAliveRequests <%=apache_maxkeepaliverequests%>
+
+#
+# KeepAliveTimeout: Number of seconds to wait for the next request from the
+# same client on the same connection.
+#
+KeepAliveTimeout <%=apache_keepalivetimeout%>
+
+##
+## Server-Pool Size Regulation (MPM specific)
+## 
+<% if apache_mpm == "prefork" %>
+# prefork MPM
+# StartServers: number of server processes to start
+# MinSpareServers: minimum number of server processes which are kept spare
+# MaxSpareServers: maximum number of server processes which are kept spare
+# MaxClients: maximum number of server processes allowed to start
+# MaxRequestsPerChild: maximum number of requests a server process serves
+<IfModule mpm_prefork_module>
+    ServerLimit           <%=apache_serverlimit%>
+    StartServers          <%=apache_startservers%>
+    MinSpareServers       <%=apache_minspare%>
+    MaxSpareServers       <%=apache_maxspare%>
+    MaxClients            <%=apache_maxclients%>
+    MaxRequestsPerChild   <%=apache_maxrequestsperchild%>
+</IfModule>
+<% elsif apache_mpm == "event" %>
+# event MPM
+# StartServers: initial number of server processes to start
+# MaxClients: maximum number of simultaneous client connections
+# MinSpareThreads: minimum number of worker threads which are kept spare
+# MaxSpareThreads: maximum number of worker threads which are kept spare
+# ThreadsPerChild: constant number of worker threads in each server process
+# MaxRequestsPerChild: maximum number of requests a server process serves
+<IfModule mpm_worker_module>
+    ServerLimit           <%=apache_serverlimit%>
+    StartServers          <%=apache_startservers%>
+    MaxClients            <%=apache_maxclients%>
+    MinSpareThreads       <%=apache_minspare%>
+    MaxSpareThreads       <%=apache_maxspare%>
+    ThreadLimit           <%=apache_threadlimit%>
+    ThreadsPerChild       <%=apache_threadsperchild%>
+    MaxRequestsPerChild   <%=apache_maxrequestsperchild%>
+</IfModule>
+<% else %>
+# worker MPM
+# StartServers: initial number of server processes to start
+# MinSpareThreads: minimum number of worker threads which are kept spare
+# MaxSpareThreads: maximum number of worker threads which are kept spare
+# ThreadLimit: ThreadsPerChild can be changed to this maximum value during a
+#              graceful restart. ThreadLimit can only be changed by stopping
+#              and starting Apache.
+# ThreadsPerChild: constant number of worker threads in each server process
+# MaxClients: maximum number of simultaneous client connections
+# MaxRequestsPerChild: maximum number of requests a server process serves
+<IfModule mpm_worker_module>
+    ServerLimit           <%=apache_serverlimit%>
+    StartServers          <%=apache_startservers%>
+    MaxClients            <%=apache_maxclients%>
+    MinSpareThreads       <%=apache_minspare%>
+    MaxSpareThreads       <%=apache_maxspare%>
+    ThreadsPerChild       <%=apache_threadsperchild%>
+    MaxRequestsPerChild   <%=apache_maxrequestsperchild%>
+</IfModule>
+<% end %>
+
+
+# Status/Monitoring VirtualHost
+Listen 8100
+ExtendedStatus On
+
+<VirtualHost *:8100>
+    ServerName *
+    # for monitoring tools integration
+    DocumentRoot /srv/http/monitoring
+
+    # mount /server-status
+    <Location /server-status>
+        SetHandler server-status
+    </Location>
+    <Location />
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.1
+    </Location>
+    <Directory /srv/http/monitoring/apache-status>
+        AllowOverride None
+        Options None
+    </Directory>
+</VirtualHost>
