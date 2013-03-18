@@ -5,10 +5,10 @@
 
 deb http://ftp.at.debian.org/debian wheezy main non-free contrib
 deb-src http://ftp.at.debian.org/debian wheezy main non-free contrib
-# deb http://ftp.at.debian.org/debian wheezy-updates main non-free contrib
-# deb-src http://ftp.at.debian.org/debian wheezy-updates main non-free contrib
+deb http://ftp.at.debian.org/debian wheezy-updates main non-free contrib
+deb-src http://ftp.at.debian.org/debian wheezy-updates main non-free contrib
 deb http://security.debian.org/ wheezy/updates main non-free contrib
 deb-src http://security.debian.org/ wheezy/updates main non-free contrib
-# deb http://ftp.at.debian.org/debian-backports wheezy-backports main
-# deb-src http://ftp.at.debian.org/debian-backports wheezy-backports main
+deb http://ftp.at.debian.org/debian wheezy-backports main
+deb-src http://ftp.at.debian.org/debian wheezy-backports main
 
