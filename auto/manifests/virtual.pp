@@ -12,4 +12,6 @@ class auto::virtual::openvzve {
 class auto::virtual::kvm {
   include ntp::client
   include grub
+  include acpi
+  include lldp
 }
