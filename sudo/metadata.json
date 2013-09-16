@@ -1,0 +1,34 @@
+{
+  "version": "2.2.0",
+  "checksums": {
+    "files/sudoers.archlinux": "f0038cf3a90e11997ec39131a39b8a50",
+    "tests/init.pp": "63f528ee1d1698fadd336da35dd4ec7a",
+    "files/sudoers.deb": "ebd77e09715c4da6be84d56233139fff",
+    "Modulefile": "d585c17cb1c4b4bd66836e3fd76aa1ef",
+    "files/sudoers.suse": "40468b19c03962cf383caf5ababed6d0",
+    "files/sudoers.freebsd": "4e2d60b0bdc7c3d77ceae7fd9224f47f",
+    "README.md": "5c897b6ae9f0af1d2a867fd14ca7d138",
+    "manifests/conf.pp": "dc0281cfac8bb1e1a5f404f380e2ba29",
+    "LICENSE": "c43ad7837d4770c3823fdab29a78f0e3",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "files/sudoers.solaris": "2d2d9d5be3b5905e42466556f6f1d5ad",
+    "manifests/params.pp": "1590928e30cca90a80aac5fcee3501e3",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "files/sudoers.rhel": "4093e52552d97099d003c645f15f9372",
+    "manifests/init.pp": "914ca0ebabb988d143688102b3e50fd9",
+    "files/sudoers.wheezy": "730c932c78e53458817e742050edb089"
+  },
+  "source": "UNKNOWN",
+  "author": "saz",
+  "dependencies": [
+
+  ],
+  "license": "Apache License, Version 2.0",
+  "summary": "UNKNOWN",
+  "description": "Manage sudo configuration via Puppet",
+  "name": "saz-sudo",
+  "types": [
+
+  ],
+  "project_page": "https://github.com/saz/puppet-sudo"
+}
